@@ -1,5 +1,5 @@
 # instawork
-A web interface for instawork
+A web interface for instawork using Django, HTML, CSS and JavaScript
 
 The project is developed in python **3.8**
 
