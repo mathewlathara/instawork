@@ -26,10 +26,10 @@
 					<div class="uk-width-1-1"><a href="#add-member"  class="uk-align-right uk-text-primary" uk-icon="icon: plus" uk-tooltip="Add new member" uk-toggle></a><br></div>
 					<div class="uk-width-1-1">
 						<div><span class="uk-text-large uk-text-bold">Team members</span></div>
-						<div><h4><small>You have <span id="mnums">3</span> team Members</small></h4></div>
+						<div><h4><small>You have <span id="mnums">{{totalcountofmembers}}</span> team Members</small></h4></div>
 						<hr>
 						
-						<div uk-grid class="uk-margin-remove">
+						<!-- <div uk-grid class="uk-margin-remove">
 							<div class="uk-width-1-6"><img class="uk-thumbnail" src="{% static 'avatar+person.png' %}" alt=""></div>
 							<div class="uk-width-expand">
 								<dl class="uk-description-list">
@@ -50,7 +50,24 @@
 								</dl>
 							</div>
 							<hr>
+						</div> -->
+						{% for member in members %}
+						<div uk-grid class="uk-margin-remove">
+							<div class="uk-width-1-6"><img class="uk-thumbnail" src="{% static 'avatar+person.png' %}" alt=""></div>
+							<div class="uk-width-expand">
+								<dl class="uk-description-list">
+									{% if member.role_type == 1 %}
+									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary" uk-toggle>{{member.first_name}} {{member.last_name}} </span>(Admin)</a></dt>
+									{% else %}
+									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary" uk-toggle>{{member.first_name}} {{member.last_name}} </span></a></dt>
+									{% endif %}
+									<dd>{{member.phone_number}}</dd>
+									<dd>{{member.email}}</dd>
+								</dl>
+							</div>
 						</div>
+						<hr>
+						{% endfor %}
 						
 					</div>
 						
@@ -89,12 +106,12 @@
 											
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Regular - Can't delete members</label></div>
-												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="1" checked></div>
+												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="0" checked></div>
 											</div>
 											<hr class="uk-margin-small">
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Admin - Can delete members</label></div>
-												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="2"></div>
+												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="1"></div>
 											</div>
 											<hr class="uk-margin">
 											<div class="uk-margin-medium-top">

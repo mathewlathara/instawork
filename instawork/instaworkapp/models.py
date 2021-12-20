@@ -8,3 +8,5 @@ class Employee(models.Model):
     email = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
     role_type = models.IntegerField(default=0) # For role_types 0 - regular 1 - admin
+    class Meta:
+        db_table = 'instaworkapp_employee'
