@@ -9,7 +9,7 @@ I have tried to demonstrate the use of custom forms and REST API with this proje
 
 The database of choice was in memory database **sqlite**.
 
-All the required packages for the working of the app is mentioned in **requirements.txt** file.
+All the required packages for the working of the app is mentioned in **[requirements.txt]** file.
 
 The app is made to work as a localhost app. 
 The default port for the app is given as 8000. 
