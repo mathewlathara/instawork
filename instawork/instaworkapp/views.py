@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.template import loader
 from django.template import RequestContext, Template
 from .models import Employee
+from .serializer import MemberSerializer
 
 # Create your views here.
-from django.http import HttpResponse  
+from django.http import HttpResponse
+from rest_framework import viewsets
   
 def hello(request):  
     return HttpResponse("<h2>Hello, Welcome to Django!</h2>")
@@ -13,9 +15,9 @@ def index(request):
 
    all_members = Employee.objects.all()
    totalcountofmembers = Employee.objects.all().count()
-   """for i in all_members:
-       print(i.first_name)"""
-   print(totalcountofmembers)
+   for i in all_members:
+       print(i.id)
+   #print(totalcountofmembers)
    return render(request, 'index.html', {'members':all_members,'totalcountofmembers':totalcountofmembers})
 
 def addmembers(request):
@@ -32,9 +34,15 @@ def addmembers(request):
         #firstname = request.POST['firstname'] #Using name of input
         #print(firstname)
         #Logic to save this email
-        return render(request, 'index.html')
+        all_members = Employee.objects.all()
+        totalcountofmembers = Employee.objects.all().count()
+        return render(request, 'index.html', {'members':all_members,'totalcountofmembers':totalcountofmembers})
         """else:
             return render(request, "You are not Authenticated")"""
     else:
         return render(request,"index.html")
+
+class memberViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all().order_by('last_name')
+    serializer_class = MemberSerializer
         

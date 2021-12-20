@@ -14,12 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from instaworkapp import views
+from rest_framework import routers
+router = routers.DefaultRouter()
+router.register(r'memberdetails', views.memberViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('basepath/', views.hello),
     path('index/', views.index),
     path('addmembers/', views.addmembers),
+    path('', include(router.urls)),
 ]
