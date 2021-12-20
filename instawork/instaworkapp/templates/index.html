@@ -57,9 +57,9 @@
 							<div class="uk-width-expand">
 								<dl class="uk-description-list">
 									{% if member.role_type == 1 %}
-									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary" uk-toggle>{{member.first_name}} {{member.last_name}} </span>(Admin)</a></dt>
+									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary editmember" editmember-id={{member.id}} uk-toggle>{{member.first_name}} {{member.last_name}} </span>(Admin)</a></dt>
 									{% else %}
-									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary" uk-toggle>{{member.first_name}} {{member.last_name}} </span></a></dt>
+									<dt><span class="uk-text-bold uk-text-capitalize"><a href="#edit-member" class="uk-text-secondary editmember" editmember-id={{member.id}} uk-toggle>{{member.first_name}} {{member.last_name}} </span></a></dt>
 									{% endif %}
 									<dd>{{member.phone_number}}</dd>
 									<dd>{{member.email}}</dd>
@@ -142,28 +142,28 @@
 											<legend class="uk-legend uk-text-bold"><small>Info</small></legend>
 											
 											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="First name" name="firstname" id="firstname">
+												<input class="uk-input" type="text" placeholder="First name" name="firstname" id="edit_firstname">
 											</div>
 											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="Last name" name="lastname" id="lastname">
+												<input class="uk-input" type="text" placeholder="Last name" name="lastname" id="edit_lastname">
 											</div>
 											<div class="uk-margin-small">
-												<input class="uk-input" type="email" placeholder="Email" name="emailid" id="emailid">
+												<input class="uk-input" type="email" placeholder="Email" name="emailid" id="edit_emailid">
 											</div>
 											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="Phone number" name="phone" id="phone">
+												<input class="uk-input" type="text" placeholder="Phone number" name="phone" id="edit_phone">
 											</div>
-											
+											<input type="hidden" id="edit_id">
 											<legend class="uk-legend uk-text-bold"><small>Role</small></legend>
 											
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Regular - Can't delete members</label></div>
-												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="1" checked></div>
+												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="0" id='edit_reg'></div>
 											</div>
 											<hr class="uk-margin-small">
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Admin - Can delete members</label></div>
-												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="2"></div>
+												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="1" id='edit_admin'></div>
 											</div>
 											<hr class="uk-margin-small">
 											<div class="uk-margin-medium-top">
@@ -183,5 +183,32 @@
 			<div class="uk-container uk-text-center uk-text-small">Copyrights &copy; Instawork</div>
 		</div>
 		<script src="{% static 'js/jquery.js' %}"></script>
+		<script>
+			$(document).on('click', '.editmember',function(){
+            var memberid = $(this).attr("editmember-id");
+            //alert(passengerid);
+            $.ajax({
+              type: 'GET',
+              url: 'http://127.0.0.1:8000/memberdetails/'+memberid+"/",
+              success: function(data) {
+                // alert(JSON.stringify(data.id));
+                $("#edit_firstname").val(data.first_name);
+                $("#edit_lastname").val(data.last_name);
+                $("#edit_emailid").val(data.email);
+                $("#edit_phone").val(data.phone_number);
+				$("#edit_id").val(data.id);
+				if(data.role_type === 1){
+					$("#edit_admin").prop("checked", true);
+				} else {
+					$("#edit_reg").prop("checked", true);
+				}
+				
+              },
+              error: function(error) {
+                alert("Error while retriving flight passenger edit list");
+              }
+            });
+        });
+		</script>
     </body>
 </html>
