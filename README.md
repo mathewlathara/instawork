@@ -1,6 +1,8 @@
 # instawork
 A web interface for instawork
 
+The project is developed in python 3.8
+
 All the work is done in Django framework.
 
 I have tried to demonstrate the use of custom forms and REST API with this project.
