@@ -3,7 +3,7 @@ from django.template import loader
 from django.template import RequestContext, Template
 from .models import Employee
 from .serializer import MemberSerializer
-from .forms import MemberForm
+from .forms import MemberForm, MemberEditForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -14,12 +14,13 @@ def hello(request):
 
 def index(request):
    memberform = MemberForm()
+   membereditform = MemberEditForm()
    all_members = Employee.objects.all()
    totalcountofmembers = Employee.objects.all().count()
    for i in all_members:
        print(i.id)
    #print(totalcountofmembers)
-   return render(request, 'index.html', {'members':all_members,'totalcountofmembers':totalcountofmembers, 'form':memberform})
+   return render(request, 'index.html', {'members':all_members,'totalcountofmembers':totalcountofmembers, 'form':memberform, 'editform':membereditform})
 
 def addmembers(request):
     user=request.user
