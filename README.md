@@ -17,4 +17,6 @@ If there is any change for the port number, change the port numbers with respect
 
 To start the working of the app, go to the folder "instawork/instawork/" and type the command "python manage.py runserver"
 
+To migrate the sqlite db tables you need to execute the command "python manage.py migrate"
+
 The base page of the app is http://localhost:8000/index
