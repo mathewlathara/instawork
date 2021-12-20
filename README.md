@@ -1,13 +1,15 @@
 # instawork
 A web interface for instawork
 
-The project is developed in python 3.8
+The project is developed in python **3.8**
 
 All the work is done in Django framework.
 
 I have tried to demonstrate the use of custom forms and REST API with this project.
 
-All the required packages for the working of the app is mentioned in requirements.txt file.
+The database of choice was in memory database **sqlite**.
+
+All the required packages for the working of the app is mentioned in **requirements.txt** file.
 
 The app is made to work as a localhost app. 
 The default port for the app is given as 8000. 
