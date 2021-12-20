@@ -89,21 +89,13 @@
 										<fieldset class="uk-fieldset">
 											<legend class="uk-legend uk-text-bold"><small>Info</small></legend>
 											
+											{% for formelement in form%}
 											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="First name" name="firstname" id="firstname">
+												
+												{{formelement}}
 											</div>
-											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="Last name" name="lastname" id="lastname">
-											</div>
-											<div class="uk-margin-small">
-												<input class="uk-input" type="email" placeholder="Email" name="emailid" id="emailid">
-											</div>
-											<div class="uk-margin-small">
-												<input class="uk-input" type="text" placeholder="Phone number" name="phone" id="phone">
-											</div>
-											
+											{% endfor %}
 											<legend class="uk-legend uk-text-bold"><small>Role</small></legend>
-											
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Regular - Can't delete members</label></div>
 												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio" type="radio" name="memberole" value="0" checked></div>
@@ -141,7 +133,7 @@
 										<fieldset class="uk-fieldset">
 											<legend class="uk-legend uk-text-bold"><small>Info</small></legend>
 											
-											<div class="uk-margin-small">
+											<!-- <div class="uk-margin-small">
 												<input class="uk-input" type="text" placeholder="First name" name="firstname" id="edit_firstname">
 											</div>
 											<div class="uk-margin-small">
@@ -159,7 +151,7 @@
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Regular - Can't delete members</label></div>
 												<div class="uk-width-1-6 uk-align-right uk-margin-remove"><input class="uk-radio edit_radio" type="radio" name="memberole" value="0" id='edit_reg'></div>
-											</div>
+											</div> -->
 											<hr class="uk-margin-small">
 											<div uk-grid class="uk-margin-remove">
 												<div class="uk-width-expand uk-margin-remove"><label>Admin - Can delete members</label></div>
