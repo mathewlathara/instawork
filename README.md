@@ -16,3 +16,5 @@ The default port for the app is given as 8000.
 If there is any change for the port number, change the port numbers with respect to the new port number in the html page located at "instawork/instawork/instaworkapp/templates/index.html" as well.
 
 To start the working of the app, go to the folder "instawork/instawork/" and type the command "python manage.py runserver"
+
+The base page of the app is http://localhost:8000/index
