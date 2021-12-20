@@ -21,6 +21,8 @@ To migrate the sqlite db tables you need to execute the command "python manage.p
 
 The base page of the app is http://localhost:8000/index
 
+## Screen Shots
+
 List Page
 
 ![image](https://user-images.githubusercontent.com/77734908/146844805-f489a4b1-a686-47c4-a1a8-ec75a19e4ef0.png)
