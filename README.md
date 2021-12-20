@@ -20,3 +20,15 @@ To start the working of the app, go to the folder "instawork/instawork/" and typ
 To migrate the sqlite db tables you need to execute the command "python manage.py migrate"
 
 The base page of the app is http://localhost:8000/index
+
+List Page
+
+![image](https://user-images.githubusercontent.com/77734908/146844805-f489a4b1-a686-47c4-a1a8-ec75a19e4ef0.png)
+
+Add Page
+
+![image](https://user-images.githubusercontent.com/77734908/146844890-a7889566-0781-4b89-9d16-58e8308379f5.png)
+
+Edit Page
+
+![image](https://user-images.githubusercontent.com/77734908/146844935-b05bf531-ca57-44ac-a431-0f0c641fc017.png)
