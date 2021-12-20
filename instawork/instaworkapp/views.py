@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.template import RequestContext, Template
 from .models import Employee
@@ -36,11 +36,11 @@ def addmembers(request):
         #Logic to save this email
         all_members = Employee.objects.all()
         totalcountofmembers = Employee.objects.all().count()
-        return render(request, 'index.html', {'members':all_members,'totalcountofmembers':totalcountofmembers})
+        return redirect(index)
         """else:
             return render(request, "You are not Authenticated")"""
     else:
-        return render(request,"index.html")
+        return redirect(index)
 
 class memberViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all().order_by('last_name')
