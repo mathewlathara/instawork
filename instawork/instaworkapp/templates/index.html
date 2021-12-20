@@ -167,7 +167,7 @@
 											</div>
 											<hr class="uk-margin-small">
 											<div class="uk-margin-medium-top">
-												<button class="uk-button uk-button-default uk-border-rounded uk-text-danger uk-text-bold" type="button">Delete</button>
+												<button class="uk-button uk-button-default uk-border-rounded uk-text-danger uk-text-bold deletemember" type="button">Delete</button>
 												<button class="uk-button uk-button-primary uk-align-right uk-border-rounded updatemembers" type="button">Save</button>
 											</div>
 										</fieldset>
@@ -231,6 +231,23 @@
 						alert("There is an error in your software. Contact support.");
 					}
 				});
+		});
+
+		$(document).on('click', '.deletemember', function(){
+			var autoid = $("#edit_id").val();
+			if (confirm("Are you sure you want to delete?")) {
+				$.ajax({
+					type: 'DELETE',
+					url: 'http://127.0.0.1:8000/memberdetails/'+ autoid+"/",
+					success: function(data) {
+						//alert(JSON.stringify(data));
+						location.reload();
+					},
+					error:function(data) {
+						alert("There is an error in your software. Contact support.");
+					}
+				});
+			}
 		});
 		</script>
     </body>
