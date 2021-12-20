@@ -67,7 +67,8 @@
 							<div class="uk-padding-remove">
 								<h4>Set Email, phone number and role</h4>
 								<div class="uk-width-1-1">
-									<form>
+									<form method="POST" action="/addmembers/">
+										{% csrf_token %}
 										<fieldset class="uk-fieldset">
 											<legend class="uk-legend uk-text-bold"><small>Info</small></legend>
 											
@@ -97,7 +98,7 @@
 											</div>
 											<hr class="uk-margin">
 											<div class="uk-margin-medium-top">
-												<button class="uk-button uk-button-primary uk-align-right uk-border-rounded" type="button">Save</button>
+												<button class="uk-button uk-button-primary uk-align-right uk-border-rounded" type="submit">Save</button>
 											</div>
 										</fieldset>
 									</form>
@@ -164,5 +165,6 @@
 		<div class="uk-section uk-section-primary uk-section-small">
 			<div class="uk-container uk-text-center uk-text-small">Copyrights &copy; Instawork</div>
 		</div>
+		<script src="{% static 'js/jquery.js' %}"></script>
     </body>
 </html>
