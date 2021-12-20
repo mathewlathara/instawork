@@ -189,7 +189,7 @@
             //alert(passengerid);
             $.ajax({
               type: 'GET',
-              url: 'http://127.0.0.1:8000/memberdetails/'+memberid+"/",
+              url: 'http://127.0.0.1:8000/memberdetails/'+memberid+"/", // change port number if the default port is not 8000
               success: function(data) {
                 // alert(JSON.stringify(data.id));
                 $("#edit_firstname").val(data.first_name);
@@ -222,7 +222,7 @@
 				$.ajax({
 					type: 'PUT',
 					data: data,
-					url: 'http://127.0.0.1:8000/memberdetails/'+ autoid+"/",
+					url: 'http://127.0.0.1:8000/memberdetails/'+ autoid+"/", // change port number if the default port is not 8000
 					success: function(data) {
 						//alert(JSON.stringify(data));
 						location.reload();
@@ -238,7 +238,7 @@
 			if (confirm("Are you sure you want to delete?")) {
 				$.ajax({
 					type: 'DELETE',
-					url: 'http://127.0.0.1:8000/memberdetails/'+ autoid+"/",
+					url: 'http://127.0.0.1:8000/memberdetails/'+ autoid+"/", // change port number if the default port is not 8000
 					success: function(data) {
 						//alert(JSON.stringify(data));
 						location.reload();
